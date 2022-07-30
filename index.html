@@ -56,7 +56,7 @@
                     <form name="data-pesanan-stand-kelas-9g">
                       <div class="mb-3">
                         <label for="name" class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="name" aria-describedby="name" name="nama" />
+                        <input type="text" class="form-control" id="nama" aria-describedby="name" name="nama" />
                       </div>
                       <div class="mb-3">
                         <label for="kelas" class="form-label">Kelas</label>
@@ -67,19 +67,23 @@
                           <textarea class="form-control" id="pesanan" rows="2" name="pesanan"></textarea>
                       </div>
                       <div class="mb-3 ">
-                        <input class="form-check-input" type="checkbox" value="yes" id="delivery" name="delivery">
+                        <input class="form-check-input" type="checkbox" value="yes" id="delivery" name="delivery" onclick="checkThe()">
                         <label class="form-check-label" for="delivery">
                           Delivery
                         </label>
-                        <div id="checklist" class="form-text">Jika ingin Delivery, klik kotak checklist</div>
+                        <div id="checklist" class="form-text">Jika tidak ingin delivery, tidak perlu dicentang & ambil pesanan di stand 9G</div>
+                      </div>
+                      <div class="mb-3" id="form-pickuploc" style="display:none">
+                        <label for="tempatpickup" class="form-label">Tempat Pickup</label>
+                        <input type="text" class="form-control" id="tempatpickup" aria-describedby="tempatpickup" name="tempatpickup">
                       </div>
                       <div class="mb-3">
                         <label for="number" class="form-label">Nomor Telepon</label>
                         <input type="text" class="form-control" id="number" aria-describedby="number" name="number">
-                        <div id="text" class="form-text">We'll never share your number with anyone else.</div>
+                        <div id="emailHelp" class="form-text">We'll never share your number with anyone else.</div>
                       </div>
 
-                      <button type="submit" class="btn btn-outline-warning btn-kirim">Kirim</button>
+                      <button type="submit" class="btn btn-outline-warning btn-kirim" onclick="checkVali()">Kirim</button>
 
                         <button class="btn btn-warning btn-loading d-none" type="button" disabled>
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -128,6 +132,17 @@
             })
             .catch(error => console.error('Error!', error.message))
         })
+
+        function checkThe(){
+          var checkbox = document.getElementById('delivery');
+          var form = document.getElementById('form-pickuploc');
+          if(checkbox.checked==true){
+            form.style.display='block';
+          } else {
+            form.style.display='none';
+          }
+        }
+
       </script>
   </body>
 </html>
